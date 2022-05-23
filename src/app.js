@@ -10,7 +10,12 @@ app.use(bodyparser.urlencoded({ extended: false }));
 
 const port = process.env.PORT || 3000;
 
-//mongodb+srv:AdnanSadiq:sadiq123@cluster0.o7lpd.mongodb.net/?retryWrites=true&w=majority;
+const DB =  'mongodb+srv://AdnanSadiq:sadiq123@cluster0.o7lpd.mongodb.net/FullStack?retryWrites=true&w=majority';
+mongoose.connect(DB).then(() => {
+    console.log(`connection successful`);
+}).catch((e) => {
+    console.log(`No Connection`);
+});
 
 app.use(express.static('public'))
 
@@ -30,8 +35,8 @@ const static_path = path.join(__dirname, "../public" );
 const mongoose = require('mongoose');
 const { stringify } = require("querystring");
 
-mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost:27017/FormSubmission');
+//mongoose.connect(
+    //process.env.MONGODB_URI || 'mongodb://localhost:27017/FormSubmission');
 
 //mongoose.connect('mongodb://localhost:27017/EduFormSubmission');
 
